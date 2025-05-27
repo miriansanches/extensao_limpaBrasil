@@ -4,4 +4,4 @@ numpy
 plotly
 Pillow
 streamlit_option_menu
-
+PIL

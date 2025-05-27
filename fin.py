@@ -451,7 +451,7 @@ def insights():
 
 def sobre():
     sl.title("Sobre o Dashboard")
-    image = Image.open(r'C:\Users\fic\Downloads\WhatsApp Image 2025-05-24 at 11.19.40.jpeg')  # ou use uma URL diretamente em st.image()
+    image = Image.open(r'image\WhatsApp Image 2025-05-24 at 11.19.40.jpeg')  # ou use uma URL diretamente em st.image()
     sl.markdown("""
     Este dashboard foi criado para analisar a relação entre limpeza e segurança em bairros de São Paulo.
     Os dados são reais e servem para comparação e dados para a Limpa Brasil.

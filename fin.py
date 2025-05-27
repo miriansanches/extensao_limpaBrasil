@@ -451,7 +451,8 @@ def insights():
 
 def sobre():
     sl.title("Sobre o Dashboard")
-    image = Image.open('image\WhatsApp Image 2025-05-24 at 11.19.40.jpeg')  # ou use uma URL diretamente em st.image()
+    foto = "https://raw.githubusercontent.com/miriansanches/extensao_limpaBrasil/refs/heads/main/image/foto.jpeg"
+    #image = Image.open('image\WhatsApp Image 2025-05-24 at 11.19.40.jpeg')  # ou use uma URL diretamente em st.image()
     sl.markdown("""
     Este dashboard foi criado para analisar a relação entre limpeza e segurança em bairros de São Paulo.
     Os dados são reais e servem para comparação e dados para a Limpa Brasil.
@@ -474,8 +475,8 @@ def sobre():
 - [Lorena Gabarão](https://www.linkedin.com/in/lorenagabarao/)
 - [Vitória Gatutti](https://www.linkedin.com/in/galuttivitoria)
 """)
-    image = Image.open('image\WhatsApp Image 2025-05-24 at 11.19.40.jpeg')  # ou use uma URL diretamente em st.image()
-    sl.image(image, caption="Foto da equipe", use_column_width=True)
+   # image = Image.open('image\WhatsApp Image 2025-05-24 at 11.19.40.jpeg')  # ou use uma URL diretamente em st.image()
+    sl.image(foto, caption="Foto da equipe", use_column_width=True)
 
     
 

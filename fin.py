@@ -451,7 +451,7 @@ def insights():
 
 def sobre():
     sl.title("Sobre o Dashboard")
-    foto = "https://raw.githubusercontent.com/miriansanches/extensao_limpaBrasil/refs/heads/main/image/foto.jpeg"
+    foto = "https://raw.githubusercontent.com/miriansanches/extensao_limpaBrasil/refs/heads/main/foto.jpeg"
     #image = Image.open('image\WhatsApp Image 2025-05-24 at 11.19.40.jpeg')  # ou use uma URL diretamente em st.image()
     sl.markdown("""
     Este dashboard foi criado para analisar a relação entre limpeza e segurança em bairros de São Paulo.
@@ -476,7 +476,7 @@ def sobre():
 - [Vitória Gatutti](https://www.linkedin.com/in/galuttivitoria)
 """)
    # image = Image.open('image\WhatsApp Image 2025-05-24 at 11.19.40.jpeg')  # ou use uma URL diretamente em st.image()
-    sl.image(foto, caption="Foto da equipe", use_column_width=True)
+    sl.image(foto, caption="Foto da equipe", use_container_width=True)
 
     
 

@@ -474,7 +474,7 @@ def sobre():
 - [Lorena Gabarão](https://www.linkedin.com/in/lorenagabarao/)
 - [Vitória Gatutti](https://www.linkedin.com/in/galuttivitoria)
 """)
-    image = Image.open(r'C:\Users\fic\Downloads\WhatsApp Image 2025-05-24 at 11.19.40.jpeg')  # ou use uma URL diretamente em st.image()
+    image = Image.open(r'image\WhatsApp Image 2025-05-24 at 11.19.40.jpeg')  # ou use uma URL diretamente em st.image()
     sl.image(image, caption="Foto da equipe", use_column_width=True)
 
     

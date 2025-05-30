@@ -484,7 +484,7 @@ def aba_depoimentos():
     depoimentos_fixos = carregar_depoimentos_fixos()
 
     # Mostrar depoimentos fixos para todos
-    sl.markdown("### Depoimentos Fixos")
+    sl.markdown("### Depoimentos e experiências coletadas de ex-funcionários ou alunos da Escola SENAI durante o período em Santa Cecilia")
     if depoimentos_fixos:
         for titulo, texto in depoimentos_fixos.items():
             sl.info(f"**{titulo}**: {texto}")
@@ -494,7 +494,7 @@ def aba_depoimentos():
     sl.markdown("---")
 
     # Caixa para usuários enviarem depoimentos (não exibidos publicamente)
-    sl.subheader("Envie seu depoimento")
+    sl.subheader("Sua experiência pode ser de muita ajuda para nós. Compartilhe suas histórias!")
     with sl.form("depoimento_usuario"):
         depoimento_usuario = sl.text_area("Seu depoimento", max_chars=500)
         enviar_usuario = sl.form_submit_button("Enviar depoimento")

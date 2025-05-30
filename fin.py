@@ -478,7 +478,7 @@ def salvar_depoimentos_fixos(depoimentos, caminho="depoimentos_fixos.json"):
 # --- Função da aba Depoimentos ---
 
 def aba_depoimentos():
-    st.title("Depoimentos")
+    sl.title("Depoimentos")
 
     # Carregar depoimentos fixos
     depoimentos_fixos = carregar_depoimentos_fixos()
@@ -487,7 +487,7 @@ def aba_depoimentos():
     sl.markdown("### Depoimentos Fixos")
     if depoimentos_fixos:
         for titulo, texto in depoimentos_fixos.items():
-            st.info(f"**{titulo}**: {texto}")
+            sl.info(f"**{titulo}**: {texto}")
     else:
         sl.info("Nenhum depoimento fixo cadastrado ainda.")
 
@@ -495,9 +495,9 @@ def aba_depoimentos():
 
     # Caixa para usuários enviarem depoimentos (não exibidos publicamente)
     sl.subheader("Envie seu depoimento")
-    with st.form("depoimento_usuario"):
-        depoimento_usuario = st.text_area("Seu depoimento", max_chars=500)
-        enviar_usuario = st.form_submit_button("Enviar depoimento")
+    with sl.form("depoimento_usuario"):
+        depoimento_usuario = sl.text_area("Seu depoimento", max_chars=500)
+        enviar_usuario = sl.form_submit_button("Enviar depoimento")
         if enviar_usuario and depoimento_usuario.strip():
             with open("depoimentos_usuarios.txt", "a", encoding="utf-8") as f:
                 f.write(f"{datetime.now().strftime('%d/%m/%Y %H:%M')} - {depoimento_usuario.strip()}\n")
@@ -507,7 +507,7 @@ def aba_depoimentos():
 
     # Área administrativa para editar depoimentos fixos
     with sl.expander("Área administrativa (restrita)"):
-        senha_admin = st.text_input("Senha de administrador:", type="password")
+        senha_admin = sl.text_input("Senha de administrador:", type="password")
         senha_correta = "extensao7"  # Troque para sua senha segura
 
         if senha_admin == senha_correta:
@@ -516,21 +516,21 @@ def aba_depoimentos():
             titulos = list(depoimentos_fixos.keys())
             textos = list(depoimentos_fixos.values())
 
-            with st.form("editar_fixos"):
+            with sl.form("editar_fixos"):
                 novos_titulos = []
                 novos_textos = []
-                st.write("Edite os depoimentos fixos abaixo:")
+                sl.write("Edite os depoimentos fixos abaixo:")
                 for i in range(len(titulos)):
-                    ntitulo = st.text_input(f"Título {i+1}", value=titulos[i], key=f"titulo_{i}")
-                    ntexto = st.text_area(f"Texto {i+1}", value=textos[i], key=f"text_{i}")
+                    ntitulo = sl.text_input(f"Título {i+1}", value=titulos[i], key=f"titulo_{i}")
+                    ntexto = sl.text_area(f"Texto {i+1}", value=textos[i], key=f"text_{i}")
                     novos_titulos.append(ntitulo)
                     novos_textos.append(ntexto)
 
-                st.markdown("### Adicionar novo depoimento fixo")
-                novo_titulo = st.text_input("Título novo depoimento", key="novo_titulo")
-                novo_texto = st.text_area("Texto novo depoimento", key="novo_texto")
+                sl.markdown("### Adicionar novo depoimento fixo")
+                novo_titulo = sl.text_input("Título novo depoimento", key="novo_titulo")
+                novo_texto = sl.text_area("Texto novo depoimento", key="novo_texto")
 
-                enviar_edicao = st.form_submit_button("Salvar alterações")
+                enviar_edicao = sl.form_submit_button("Salvar alterações")
 
                 if enviar_edicao:
                     depoimentos_fixos_atualizados = {}

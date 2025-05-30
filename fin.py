@@ -449,6 +449,104 @@ def insights():
     else:
         sl.info("Nenhum feedback enviado ainda. Use o formulário na barra lateral para contribuir!")
 
+import json
+import os
+from datetime import datetime
+
+# Seu código original continua aqui (listas, dados, funções home, graficos, comparativo_limpos_sujos, etc.)
+# ---------------------------------------------------------
+# (Mantenha todo o seu código original exatamente como está)
+# ---------------------------------------------------------
+
+# --- Funções para depoimentos fixos ---
+
+def carregar_depoimentos_fixos(caminho="depoimentos_fixos.json"):
+    if os.path.exists(caminho):
+        with open(caminho, "r", encoding="utf-8") as f:
+            return json.load(f)
+    else:
+        return {
+            "Depoimento 1": "A limpeza do bairro melhorou muito nos últimos meses.",
+            "Depoimento 2": "A segurança nas ruas é um diferencial importante para a qualidade de vida.",
+            "Depoimento 3": "Fico feliz em ver mais ações de coleta seletiva."
+        }
+
+def salvar_depoimentos_fixos(depoimentos, caminho="depoimentos_fixos.json"):
+    with open(caminho, "w", encoding="utf-8") as f:
+        json.dump(depoimentos, f, ensure_ascii=False, indent=4)
+
+# --- Função da aba Depoimentos ---
+
+def aba_depoimentos():
+    st.title("Depoimentos")
+
+    # Carregar depoimentos fixos
+    depoimentos_fixos = carregar_depoimentos_fixos()
+
+    # Mostrar depoimentos fixos para todos
+    sl.markdown("### Depoimentos Fixos")
+    if depoimentos_fixos:
+        for titulo, texto in depoimentos_fixos.items():
+            st.info(f"**{titulo}**: {texto}")
+    else:
+        sl.info("Nenhum depoimento fixo cadastrado ainda.")
+
+    sl.markdown("---")
+
+    # Caixa para usuários enviarem depoimentos (não exibidos publicamente)
+    sl.subheader("Envie seu depoimento")
+    with st.form("depoimento_usuario"):
+        depoimento_usuario = st.text_area("Seu depoimento", max_chars=500)
+        enviar_usuario = st.form_submit_button("Enviar depoimento")
+        if enviar_usuario and depoimento_usuario.strip():
+            with open("depoimentos_usuarios.txt", "a", encoding="utf-8") as f:
+                f.write(f"{datetime.now().strftime('%d/%m/%Y %H:%M')} - {depoimento_usuario.strip()}\n")
+            sl.success("Depoimento enviado! Obrigado por compartilhar.")
+
+    sl.markdown("---")
+
+    # Área administrativa para editar depoimentos fixos
+    with sl.expander("Área administrativa (restrita)"):
+        senha_admin = st.text_input("Senha de administrador:", type="password")
+        senha_correta = "extensao7"  # Troque para sua senha segura
+
+        if senha_admin == senha_correta:
+            sl.success("Acesso liberado para editar depoimentos fixos.")
+
+            titulos = list(depoimentos_fixos.keys())
+            textos = list(depoimentos_fixos.values())
+
+            with st.form("editar_fixos"):
+                novos_titulos = []
+                novos_textos = []
+                st.write("Edite os depoimentos fixos abaixo:")
+                for i in range(len(titulos)):
+                    ntitulo = st.text_input(f"Título {i+1}", value=titulos[i], key=f"titulo_{i}")
+                    ntexto = st.text_area(f"Texto {i+1}", value=textos[i], key=f"text_{i}")
+                    novos_titulos.append(ntitulo)
+                    novos_textos.append(ntexto)
+
+                st.markdown("### Adicionar novo depoimento fixo")
+                novo_titulo = st.text_input("Título novo depoimento", key="novo_titulo")
+                novo_texto = st.text_area("Texto novo depoimento", key="novo_texto")
+
+                enviar_edicao = st.form_submit_button("Salvar alterações")
+
+                if enviar_edicao:
+                    depoimentos_fixos_atualizados = {}
+                    for t, txt in zip(novos_titulos, novos_textos):
+                        if t.strip() and txt.strip():
+                            depoimentos_fixos_atualizados[t.strip()] = txt.strip()
+
+                    if novo_titulo.strip() and novo_texto.strip():
+                        depoimentos_fixos_atualizados[novo_titulo.strip()] = novo_texto.strip()
+
+                    salvar_depoimentos_fixos(depoimentos_fixos_atualizados)
+                    sl.success("Depoimentos fixos atualizados com sucesso!")
+                    sl.experimental_rerun()
+        elif senha_admin:
+            sl.error("Senha incorreta.")
+
 def sobre():
     sl.title("Sobre o Dashboard")
     foto = "https://raw.githubusercontent.com/miriansanches/extensao_limpaBrasil/refs/heads/main/foto.jpeg"
@@ -484,8 +582,8 @@ def sidebar():
     with sl.sidebar:
         selecionado = option_menu(
             menu_title='Menu',
-            options=['Home', 'Gráficos', 'Limpos & Seguros vs Sujos & Perigosos', 'Insights', 'Sobre'],
-            icons=['house', 'bar-chart', 'shield-shaded', 'lightbulb', 'info-circle'],
+            options=['Home', 'Gráficos', 'Limpos & Seguros vs Sujos & Perigosos', 'Insights','Depoimentos', 'Sobre'],
+            icons=['house', 'bar-chart', 'shield-shaded', 'lightbulb','chat', 'info-circle'],
             default_index=0
         )
     if selecionado == 'Home':
@@ -496,6 +594,8 @@ def sidebar():
         comparativo_limpos_sujos()
     elif selecionado == 'Insights':
         insights()
+    elif selecionado == 'Depoimentos':
+        aba_depoimentos()
     else:
         sobre()
 

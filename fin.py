@@ -415,6 +415,7 @@ def comparativo_limpos_sujos():
         
 from datetime import datetime
 def aba_teoria_janelas_quebradas():
+    janela = 'https://raw.githubusercontent.com/miriansanches/extensao_limpaBrasil/refs/heads/main/janeladiferente.jpeg'
     sl.title("🧩 Teoria das Janelas Quebradas")
     
     sl.markdown("""
@@ -426,8 +427,7 @@ def aba_teoria_janelas_quebradas():
     A **Teoria das Janelas Quebradas** sugere que a manutenção da ordem e a reparação rápida de pequenos danos, como janelas quebradas, pichações e lixo acumulado, podem prevenir crimes maiores e a degradação social.
     """)
     janela = 'https://raw.githubusercontent.com/miriansanches/extensao_limpaBrasil/refs/heads/main/janeladiferente.jpeg'
-    sl.image(janela,caption="Ilustração da Teoria das Janelas Quebradas", use_container_width=True
-    )
+    sl.image(janela,caption="Ilustração da Teoria das Janelas Quebradas", use_container_width=True)
 
     sl.markdown("---")
     sl.header("🚗 O Experimento dos Carros Abandonados")

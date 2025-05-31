@@ -410,6 +410,69 @@ def comparativo_limpos_sujos():
                              color_discrete_map={'Limpos & Seguros': 'green', 'Sujos & Perigosos': 'red'},
                              title='Percentual dos grupos em relação ao total filtrado')
         sl.plotly_chart(fig_percent, use_container_width=True)
+        
+        
+        
+from datetime import datetime
+def aba_teoria_janelas_quebradas():
+    sl.title("🧩 Teoria das Janelas Quebradas")
+    
+    sl.markdown("""
+    > “Se uma janela está quebrada e não for consertada, todas as outras janelas também serão quebradas.”  
+    > — **James Q. Wilson & George L. Kelling (1982)**
+    """)
+    
+    sl.write("""
+    A **Teoria das Janelas Quebradas** sugere que a manutenção da ordem e a reparação rápida de pequenos danos, como janelas quebradas, pichações e lixo acumulado, podem prevenir crimes maiores e a degradação social.
+    """)
+
+    sl.image(
+        "https://upload.wikimedia.org/wikipedia/commons/0/0b/Broken_window_effect_diagram.png",
+        caption="Ilustração da Teoria das Janelas Quebradas", use_column_width=True
+    )
+
+    sl.markdown("---")
+    sl.header("🚗 O Experimento dos Carros Abandonados")
+    sl.write("""
+    Dois carros idênticos foram abandonados em bairros diferentes dos EUA:
+    - Um no **Bronx**, área com alta criminalidade.
+    - Outro em **Palo Alto**, bairro tranquilo.
+    
+    O carro no Bronx foi vandalizado e destruído rapidamente. O carro em Palo Alto permaneceu intacto até que um vidro foi quebrado propositalmente — a partir daí, ele também foi vandalizado.
+    """)
+
+    sl.video("https://www.youtube.com/watch?v=EuQFpKRuks0")
+
+    sl.markdown("---")
+    sl.header("🏙️ Implicações Práticas e Políticas Públicas")
+    sl.write("""
+    Essa teoria influenciou políticas públicas, como a **Tolerância Zero** em Nova York, que foca na repressão de pequenos delitos para evitar crimes maiores.  
+    A ideia é que a manutenção da ordem e o cuidado com o ambiente urbano promovem a sensação de segurança e o respeito às normas.
+    """)
+
+    sl.markdown("""
+    **Principais ações baseadas na teoria:**
+    - Reparar rapidamente danos e vandalismos.
+    - Manter a limpeza e a iluminação das ruas.
+    - Encorajar a participação comunitária na vigilância do bairro.
+    - Aplicar leis contra pequenos delitos para prevenir maiores.
+    """)
+
+    sl.markdown("---")
+    sl.header("📊 Relação com Este Dashboard")
+    sl.write("""
+    Nosso dashboard monitora a limpeza, segurança e condições dos bairros, ajudando a identificar áreas que precisam de atenção imediata.  
+    Conforme a Teoria das Janelas Quebradas, ações rápidas para resolver pequenos problemas evitam a escalada da criminalidade e melhoram a qualidade de vida.
+    """)
+
+    sl.markdown("---")
+    sl.header("🔗 Para saber mais")
+    sl.markdown("""
+    - [Artigo na Wikipédia sobre Teoria das Janelas Quebradas](https://pt.wikipedia.org/wiki/Teoria_das_janelas_quebradas)  
+    - [Vídeo explicativo no YouTube](https://www.youtube.com/watch?v=EuQFpKRuks0)  
+    - [Livro: *Fixing Broken Windows* de George L. Kelling e Catherine Coles (em inglês)](https://www.amazon.com.br/Fixing-Broken-Windows-George-Kelling/dp/0684839475)
+    """)
+
 
 def insights():
     sl.title("Insights e Conclusões")
@@ -582,12 +645,14 @@ def sidebar():
     with sl.sidebar:
         selecionado = option_menu(
             menu_title='Menu',
-            options=['Home', 'Gráficos', 'Limpos & Seguros vs Sujos & Perigosos', 'Insights','Depoimentos', 'Sobre'],
-            icons=['house', 'bar-chart', 'shield-shaded', 'lightbulb','chat', 'info-circle'],
+            options=['Home', 'Gráficos','Teoria da Janela Quebrada', 'Limpos & Seguros vs Sujos & Perigosos', 'Insights','Depoimentos', 'Sobre'],
+            icons=['house', 'bar-chart', 'book','shield-shaded', 'lightbulb','chat', 'info-circle'],
             default_index=0
         )
     if selecionado == 'Home':
         home()
+    elif selecionado == 'Teoria da Janela Quebrada':
+        aba_teoria_janelas_quebradas()    
     elif selecionado == 'Gráficos':
         graficos()
     elif selecionado == 'Limpos & Seguros vs Sujos & Perigosos':

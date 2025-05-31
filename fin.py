@@ -230,55 +230,8 @@ df_filtrado = df[
 if busca:
     df_filtrado = df_filtrado[df_filtrado['Bairro'].str.contains(busca, case=False)]
 
-def aplicar_css_personalizado():
-    sl.markdown(
-        """
-        <style>
-        /* Fundo geral da página */
-        .main {
-            background-color: #f9f9fb;
-        }
-        /* Estilo dos títulos */
-        h1, h2, h3 {
-            color: #2c3e50;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        /* Botões estilizados */
-        div.stButton > button {
-            background-color: #5a2a83;
-            color: white;
-            border-radius: 10px;
-            border: none;
-            padding: 10px 20px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        div.stButton > button:hover {
-            background-color: #7b42b8;
-            cursor: pointer;
-        }
-        /* Inputs e textareas */
-        input, textarea {
-            border-radius: 8px;
-            border: 1.5px solid #5a2a83;
-            padding: 8px;
-            font-size: 1rem;
-        }
-        /* Links */
-        a {
-            color: #5a2a83;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )    
 
 def home():
-    aplicar_css_personalizado()
     sl.title('Análise do Lixo e Segurança em São Paulo')
     sl.markdown("""
         Este dashboard permite explorar a relação entre limpeza urbana e segurança nos bairros da cidade de São Paulo.

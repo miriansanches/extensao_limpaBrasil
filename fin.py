@@ -428,7 +428,7 @@ def aba_teoria_janelas_quebradas():
 
     sl.image(
         "https://upload.wikimedia.org/wikipedia/commons/0/0b/Broken_window_effect_diagram.png",
-        caption="Ilustração da Teoria das Janelas Quebradas", use_column_width=True
+        caption="Ilustração da Teoria das Janelas Quebradas", use_container_width=True
     )
 
     sl.markdown("---")

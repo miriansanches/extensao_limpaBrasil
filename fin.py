@@ -425,10 +425,8 @@ def aba_teoria_janelas_quebradas():
     sl.write("""
     A **Teoria das Janelas Quebradas** sugere que a manutenção da ordem e a reparação rápida de pequenos danos, como janelas quebradas, pichações e lixo acumulado, podem prevenir crimes maiores e a degradação social.
     """)
-
-    sl.image(
-        "https://upload.wikimedia.org/wikipedia/commons/0/0b/Broken_window_effect_diagram.png",
-        caption="Ilustração da Teoria das Janelas Quebradas", use_container_width=True
+    janela = 'https://raw.githubusercontent.com/miriansanches/extensao_limpaBrasil/refs/heads/main/image/janeladiferente.jpeg'
+    sl.image(janela,caption="Ilustração da Teoria das Janelas Quebradas", use_container_width=True
     )
 
     sl.markdown("---")

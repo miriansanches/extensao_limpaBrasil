@@ -1,28 +1,12 @@
 [theme]
-# Cor primária dos botões e destaques
-primaryColor = "#5a2a83"
 
-# Cor de fundo principal do app
-backgroundColor = "#f9f9fb"
-
-# Cor de fundo secundária (usada em cards, containers, sidebar)
-secondaryBackgroundColor = "#e0e6f7"
-
-# Cor dos textos principais
-textColor = "#2c3e50"
-
-# Cor dos textos dos títulos e métricas
+primaryColor = "#7f5af0"                  # Roxo claro para destaques e botões
+backgroundColor = "#16161a"               # Fundo principal bem escuro
+secondaryBackgroundColor = "#242629"      # Fundo de cards, containers e sidebar
+textColor = "#fffffe"                     # Texto principal branco
 font = "sans serif"
 
-# Cor dos gráficos de sucesso (ex: Limpos & Seguros)
-successColor = "#3CB371"
-
-# Cor dos gráficos de alerta (ex: Sujos & Perigosos)
-warningColor = "#FF6347"
-
-# Cor dos gráficos de informação
-infoColor = "#4682B4"
-
-# Cor dos gráficos de erro
-dangerColor = "#B22222"
-
+successColor = "#2cb67d"                  # Verde para sucesso
+warningColor = "#ff8906"                  # Laranja para alertas
+infoColor = "#3b82f6"                     # Azul para informações
+dangerColor = "#ff3864"                   # Vermelho para erros

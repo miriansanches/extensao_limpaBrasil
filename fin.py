@@ -462,12 +462,14 @@ def aba_teoria_janelas_quebradas():
     sl.write("""
     Nosso dashboard monitora a limpeza, segurança e condições dos bairros, ajudando a identificar áreas que precisam de atenção imediata.  
     Conforme a Teoria das Janelas Quebradas, ações rápidas para resolver pequenos problemas evitam a escalada da criminalidade e melhoram a qualidade de vida.
+    Criando soluções para a ONG Limpa Brasil
+    
     """)
 
     sl.markdown("---")
     sl.header("🔗 Para saber mais")
     sl.markdown("""
-    - [Artigo na Wikipédia sobre Teoria das Janelas Quebradas](https://pt.wikipedia.org/wiki/Teoria_das_janelas_quebradas)  
+    - [Artigo oficial para elaboração desse dashboard](https://media4.manhattan-institute.org/pdf/_atlantic_monthly-broken_windows.pdf)  
     - [Vídeo explicativo no YouTube](https://www.youtube.com/watch?v=EuQFpKRuks0)  
     - [Livro: *Fixing Broken Windows* de George L. Kelling e Catherine Coles (em inglês)](https://www.amazon.com.br/Fixing-Broken-Windows-George-Kelling/dp/0684839475)
     """)

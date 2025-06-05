@@ -9,6 +9,11 @@ import re
 from PIL import Image
 from streamlit_extras.add_vertical_space import add_vertical_space
 from streamlit_extras.mention import mention
+from streamlit_extras.styled_button import styled_button
+from streamlit_extras.styled_container import styled_container
+from streamlit_extras.copy_to_clipboard import copy_to_clipboard
+from streamlit_extras.progress_bar import progress_bar
+from streamlit_extras.loading_spinner import loading_spinner
 
 # Configuração da página
 sl.set_page_config(page_title='Analise do lixo em SP', page_icon='🏙️', layout='wide')
@@ -232,6 +237,33 @@ df_filtrado = df[
 if busca:
     df_filtrado = df_filtrado[df_filtrado['Bairro'].str.contains(busca, case=False)]
 
+def botao_estilizado():
+    if styled_button("Mostrar bairros mais seguros", key="btn_seguros"):
+        sl.write(", ".join(data['Bairros mais seguros de SP']))
+
+def container_estilizado():
+    with styled_container("Resumo dos Bairros", key="container_resumo"):
+        sl.write("Total de bairros seguros:", len(data['Bairros mais seguros de SP']))
+        sl.write("Total de bairros perigosos:", len(data['Bairros mais perigosos de SP']))
+        sl.write("Total de bairros limpos:", len(data['Bairros mais limpos de SP']))
+        sl.write("Total de bairros sujos:", len(data['Bairros mais sujos de SP']))
+
+def copiar_texto():
+    texto_para_copiar = "\n".join(data['Bairros mais seguros de SP'])
+    copy_to_clipboard(texto_para_copiar, label="Copiar lista de bairros seguros")
+
+def barra_progresso():
+    # Exemplo: percentual de bairros limpos em relação ao total listado
+    total_bairros = len(set(sum(data.values(), [])))
+    limpos = len(data['Bairros mais limpos de SP'])
+    progresso = limpos / total_bairros if total_bairros > 0 else 0
+    progress_bar(progresso, label=f"Percentual de bairros limpos: {progresso:.0%}")
+
+def spinner_carregamento():
+    with loading_spinner("Carregando dados dos bairros..."):
+        import time
+        time.sleep(2)  # Simula uma operação demorada
+    sl.success("Dados carregados com sucesso!")
 
 def home():
     sl.title('Análise do Lixo e Segurança em São Paulo')
@@ -258,6 +290,11 @@ def home():
     sl.markdown('---')
     sl.markdown('### Bairros filtrados')
     sl.dataframe(df_filtrado[['Bairro', 'Seguro', 'Perigoso', 'Limpo', 'Sujo', 'Seguro_e_Limpo', 'Sujo_e_Perigoso']].reset_index(drop=True))
+    botao_estilizado()
+    container_estilizado()
+    copiar_texto()
+    barra_progresso()
+    spinner_carregamento()
 
             # Download dos dados filtrados
     csv = df_filtrado.to_csv(index=False).encode('utf-8')

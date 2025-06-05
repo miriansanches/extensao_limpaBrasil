@@ -7,13 +7,8 @@ import re
 
 
 from PIL import Image
-from streamlit_extras.add_vertical_space import add_vertical_space
-from streamlit_extras.mention import mention
-from streamlit_extras.styled_button import styled_button
-from streamlit_extras.styled_container import styled_container
-from streamlit_extras.copy_to_clipboard import copy_to_clipboard
-from streamlit_extras.progress_bar import progress_bar
-from streamlit_extras.loading_spinner import loading_spinner
+
+
 
 # Configuração da página
 sl.set_page_config(page_title='Analise do lixo em SP', page_icon='🏙️', layout='wide')
@@ -689,9 +684,6 @@ def sidebar():
             icons=['house', 'bar-chart', 'book','shield-shaded', 'lightbulb','chat', 'info-circle'],
             default_index=0
         )
-    add_vertical_space(1)
-    mention(label="Veja o repositório", icon="github", url="https://github.com/miriansanches/extensao_limpaBrasil")
-    add_vertical_space(1)    
     if selecionado == 'Home':
         home()
     elif selecionado == 'Teoria da Janela Quebrada':

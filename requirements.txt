@@ -4,6 +4,6 @@ numpy
 plotly
 Pillow
 streamlit_option_menu
-streamlit_extras
+streamlit-extras
 
 
